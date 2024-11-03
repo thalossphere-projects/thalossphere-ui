@@ -97,7 +97,11 @@ flowsphere是基于bytebuddy字节码增强技术进行建设，采用插件化�
 - vue3
 
 ## 运行命令
+
+npm run build
+
 npm run dev
+
 npm run prod
 
 

@@ -94,7 +94,8 @@ flowsphere是基于bytebuddy字节码增强技术进行建设，采用插件化�
 # 环境要求
 ## 语言环境
 
-- vue3
+- vue 3
+- vite 5.4.10
 
 ## 运行命令
 

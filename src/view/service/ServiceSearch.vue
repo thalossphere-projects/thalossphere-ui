@@ -9,7 +9,7 @@
             </el-input>
             <el-table :data="serviceSearchData" border style="width: 100%;margin-top:20px">
                 <el-table-column prop="name" label="服务名称"/>
-                <el-table-column prop="upNumber" label="在线数量"/>
+                <el-table-column prop="onlineNumber" label="在线数量"/>
                 <el-table-column label="操作">
                     <template #default="scope">
                         <el-button size="small"
@@ -76,7 +76,7 @@ const getServiceList = async () => {
     getServiceListParam.providerName = searchForm.providerName;
     getServiceListParam.size = searchForm.size;
     getServiceListParam.page = searchForm.page - 1;
-    const res = await providerApi.findByName(getServiceListParam);
+    const res = await providerApi.findProviderResponseByNameAndStatus(getServiceListParam);
     serviceSearchData.value = res.data.content;
     total.value = res.data.totalElements;
 }

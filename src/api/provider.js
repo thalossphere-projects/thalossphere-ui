@@ -1,7 +1,7 @@
 import http from '../utils/http/http.js'
 
-const findByName = (data) => {
-    return http.get("/provider/findByName", data);
+const findProviderResponseByNameAndStatus = (data) => {
+    return http.get("/provider/findProviderResponseByNameAndStatus", data);
 };
 
 const findInstantByProviderIdAndIp = (data) => {
@@ -13,5 +13,5 @@ const findFunctionByProviderIdAndUrl = (data) => {
 };
 
 export default {
-    findByName, findInstantByProviderIdAndIp, findFunctionByProviderIdAndUrl
+    findProviderResponseByNameAndStatus, findInstantByProviderIdAndIp, findFunctionByProviderIdAndUrl
 }

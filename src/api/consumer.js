@@ -8,6 +8,10 @@ const findByProviderNameAndUrlAndConsumerName = (data) => {
     return http.get("/consumer/findByProviderNameAndUrlAndConsumerName", data);
 };
 
+const findByConsumerIdOrProviderIp = (data) => {
+    return http.get("/consumer/findByConsumerIdOrProviderIp", data);
+}
+
 export default {
-    findByProviderNameAndConsumerName, findByProviderNameAndUrlAndConsumerName
+    findByProviderNameAndConsumerName, findByProviderNameAndUrlAndConsumerName, findByConsumerIdOrProviderIp
 }

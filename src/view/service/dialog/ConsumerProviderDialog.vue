@@ -5,17 +5,17 @@
             title="节点列表"
             :before-close="handleClose"
     >
-        <el-input style="width:440px" @clear="searchNode" clearable v-model="searchForm.ip"
-                  placeholder="ip查询" class="input-with-select">
+        <el-input style="width:440px" @clear="searchNode" clearable v-model="searchForm.providerIp"
+                  placeholder="providerIp查询" class="input-with-select">
             <template #append>
                 <el-button icon="Search" @click="searchNode"/>
             </template>
         </el-input>
         <el-table :data="tableData" border style="width: 100%;margin-top:20px">
-            <el-table-column prop="ip" label="ip地址"/>
+            <el-table-column prop="providerIp" label="providerIp地址"/>
             <el-table-column prop="status" label="状态">
                 <template #default="{row}">
-                    {{mapStatus(row.status)}}
+                    {{ mapStatus(row.status) }}
                 </template>
             </el-table-column>
 
@@ -30,7 +30,7 @@
 
 
 <script setup lang="ts">
-import providerApi from "../../../api/provider.js";
+import consumerApi from "../../../api/consumer.js";
 import {reactive, ref} from 'vue';
 
 
@@ -41,16 +41,16 @@ const statusEnum = {
 
 const nodeListVisible = ref(false);
 
-const providerId = ref();
+const consumerId = ref();
 const handleOpen = (row) => {
     nodeListVisible.value = true;
-    providerId.value = row.id;
+    consumerId.value = row.id;
     getNodeList();
     // 其他逻辑
 };
 const handleClose = () => {
     nodeListVisible.value = false;
-    searchForm.ip = '';
+    searchForm.providerIp = '';
 };
 
 let tableData = ref([]);
@@ -60,22 +60,22 @@ let total = ref(0);
 const searchForm = reactive({
     page: 1,
     size: 10,
-    ip: ''
+    providerIp: ''
 })
 
 const getNodeListParam = reactive({
     page: 0,
     size: 10,
-    providerId: 0,
-    ip: ''
+    consumerId: 0,
+    providerIp: ''
 })
 // 获取用户列表
 const getNodeList = async () => {
-    getNodeListParam.providerId = providerId.value,
-        getNodeListParam.ip = searchForm.ip;
+    getNodeListParam.consumerId = consumerId.value;
+    getNodeListParam.providerIp = searchForm.providerIp;
     getNodeListParam.size = searchForm.size;
     getNodeListParam.page = searchForm.page - 1;
-    const res = await providerApi.findInstantByProviderIdAndIp(getNodeListParam);
+    const res = await consumerApi.findByConsumerIdOrProviderIp(getNodeListParam);
     tableData.value = res.data.content;
     total.value = res.data.totalElements;
 }

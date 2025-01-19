@@ -13,6 +13,14 @@
         </el-input>
         <el-table :data="tableData" border style="width: 100%;margin-top:20px">
             <el-table-column prop="name" label="消费者服务名"/>
+            <el-table-column label="操作">
+                <template #default="scope">
+                    <el-button size="small"
+                               @click="consumerProviderDialog(scope.row)">
+                        服务提供者实例列表
+                    </el-button>
+                </template>
+            </el-table-column>
         </el-table>
         <!-- 分页 -->
         <el-pagination style="margin-top:20px" :current-page="searchForm.page" :page-size="searchForm.size"
@@ -20,6 +28,7 @@
                        :total="total"
                        @size-change="handleSizeChange" @current-change="handleCurrentChange"/>
 
+        <ConsumerProviderDialog ref="consumerProviderDialogRef"></ConsumerProviderDialog>
     </el-dialog>
 </template>
 
@@ -27,10 +36,19 @@
 <script setup lang="ts">
 import consumerApi from "../../../api/consumer.js";
 import {reactive, ref} from 'vue';
+import NodeListDialog from "./NodeListDialog.vue";
+import ConsumerProviderDialog from "./ConsumerProviderDialog.vue";
 
 const consumerListVisible = ref(false);
 
 const providerName = ref('');
+
+const consumerProviderDialogRef = ref<InstanceType<typeof ConsumerProviderDialog> | null>(null);
+
+const consumerProviderDialog = (row) => {
+    consumerProviderDialogRef.value?.handleOpen(row);
+}
+
 const handleOpen = (row) => {
     consumerListVisible.value = true;
     providerName.value = row.name;

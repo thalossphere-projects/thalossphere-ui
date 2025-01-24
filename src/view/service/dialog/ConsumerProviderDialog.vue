@@ -35,6 +35,7 @@ import {reactive, ref} from 'vue';
 
 
 const statusEnum = {
+    0: '删除',
     1: '正常',
     2: '隔离',
 };

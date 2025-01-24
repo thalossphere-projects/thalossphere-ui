@@ -2,7 +2,7 @@
 
     <el-dialog
             v-model="nodeListVisible"
-            title="节点列表"
+            title="服务提供者实例列表"
             :before-close="handleClose"
     >
         <el-input style="width:440px" @clear="searchNode" clearable v-model="searchForm.providerIp"

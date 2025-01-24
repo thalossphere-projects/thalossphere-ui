@@ -6,7 +6,7 @@
             :before-close="handleClose"
     >
         <el-input style="width:440px" @clear="searchConsumer" clearable v-model="searchForm.name"
-                  placeholder="消费者查询" class="input-with-select">
+                  placeholder="消费者服务名查询" class="input-with-select">
             <template #append>
                 <el-button icon="Search" @click="searchConsumer"/>
             </template>

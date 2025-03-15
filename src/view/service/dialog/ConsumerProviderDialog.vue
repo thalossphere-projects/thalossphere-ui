@@ -2,7 +2,7 @@
 
     <el-dialog
             v-model="nodeListVisible"
-            title="服务提供者实例列表"
+            title="提供者实例列表"
             :before-close="handleClose"
     >
         <el-input style="width:440px" @clear="searchNode" clearable v-model="searchForm.providerIp"
@@ -13,6 +13,7 @@
         </el-input>
         <el-table :data="tableData" border style="width: 100%;margin-top:20px">
             <el-table-column prop="providerIp" label="providerIp地址"/>
+            <el-table-column prop="port" label="端口"/>
             <el-table-column prop="status" label="状态">
                 <template #default="{row}">
                     {{ mapStatus(row.status) }}

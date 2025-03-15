@@ -17,7 +17,7 @@
                 <template #default="scope">
                     <el-button size="small"
                                @click="consumerProviderDialog(scope.row)">
-                        服务提供者实例列表
+                        提供者实例列表
                     </el-button>
                 </template>
             </el-table-column>

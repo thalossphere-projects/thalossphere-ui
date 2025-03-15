@@ -5,7 +5,7 @@ const findProviderResponseByNameAndStatus = (data) => {
 };
 
 const findInstantByProviderIdAndIp = (data) => {
-    return http.get("/provider/findInstantByProviderIdAndIp", data);
+    return http.get("/provider/findInstanceByProviderIdAndIp", data);
 };
 
 const findFunctionByProviderIdAndUrl = (data) => {
